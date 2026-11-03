@@ -41,3 +41,21 @@ Please specify each flag/option in a new line starting with minimum 2 spaces.
       -Uhfuse:w:0xD7:m
       -Uefuse:w:0xF6:m
       -Ulfuse:w:0xE2:m
+
+**Shell quoting**
+
+Some upload commands run through a shell. For ESP32 OTA uploads on Linux,
+quote an apostrophe in the password as follows:
+
+.. code-block:: ini
+
+    upload_flags =
+      --auth="a'b"
+
+This passes the password ``a'b``; the double quotes are shell syntax.
+When using :envvar:`PLATFORMIO_UPLOAD_FLAGS`, include those quotes in the
+variable's value. For example, in Bash:
+
+.. code-block:: bash
+
+    export PLATFORMIO_UPLOAD_FLAGS="--auth=\"a'b\""
